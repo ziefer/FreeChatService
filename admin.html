@@ -24,18 +24,18 @@ function restart() {
 $(function() {
 	socket.on('message', function(data) {
 		console.log(data);
-		message_list.innerHTML = "Other :" + data.message + "<br />" + message_list.innerHTML;
+		message_list.innerHTML = "Other: " + data.message + "<br />" + message_list.innerHTML;
 	});
 
 	socket.on('my_message', function(data) {
-		message_list.innerHTML = "You :" + data.message + "<br />" + message_list.innerHTML;
+		message_list.innerHTML = "You: " + data.message + "<br />" + message_list.innerHTML;
 	});
 
 	socket.on('system report', function(data) {
 		if (data.err) {
-			message_list.innerHTML = "Error:<br />" + data.stderr.replace('\n', '<br />') + '<br />' + message_list.innerHTML;
+			message_list.innerHTML = "Error: " + data.stderr.replace('\n', '<br />') + '<br />' + message_list.innerHTML;
 		} else {
-			message_list.innerHTML = "System:<br />" + data.stdout.replace('\n', '<br />') + '<br />' + message_list.innerHTML;
+			message_list.innerHTML = "System: " + data.stdout.replace('\n', '<br />') + '<br />' + message_list.innerHTML;
 		}
 	});
 });
