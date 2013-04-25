@@ -39,7 +39,7 @@ io.sockets.on('connection', function (socket) {
 			} else {
 				console.log(stdout);
 			}
-			socket.emit('system report', {err: err, stdout: stdout, stderr: stderr});
+			socket.emit('system report', arguments);
 			
 			callback(arguments);
 		});
