@@ -8,11 +8,6 @@
 	<script>
 var socket = io.connect('http://lisyoen.cafe24.com:8003');
 
-function send() {
-	socket.emit('my other event', {message:input.value});
-	input.value = "";
-}
-
 function git_pull() {
 	socket.emit('git pull');
 }
@@ -43,8 +38,6 @@ $(function() {
 </head>
 <body>
 <h3>admin page</h3>
-Input
-	<input type="message" onkeydown="if (event.keyCode == 13) send() " id="input">
 	<button type="button" onclick="send()">Send</button>
 	<button type="button" onclick="git_pull()">git pull</button>
 	<button type="button" onclick="restart()">restart</button>
