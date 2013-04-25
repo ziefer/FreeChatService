@@ -1,4 +1,4 @@
 lisyoen.github.com
 ==================
-웰컴이다.
-This is a welcome.
+어서와. 깃허브는 처음이지?<br/>
+Welcome. You must be newbie GitHub. Huh?
