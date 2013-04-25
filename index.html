@@ -13,14 +13,6 @@ function send() {
 	input.value = "";
 }
 
-function git_pull() {
-	socket.emit('git pull');
-}
-
-function restart() {
-	socket.emit('restart');
-}
-
 $(function() {
 	socket.on('message', function(data) {
 		console.log(data);
@@ -45,8 +37,6 @@ $(function() {
 Input
 	<input type="message" onkeydown="if (event.keyCode == 13) send() " id="input">
 	<button type="button" onclick="send()">Send</button>
-	<button type="button" onclick="git_pull()">git pull</button>
-	<button type="button" onclick="restart()">Restart</button>
 	<div id="message_list"></div>
 </body>
 </html>
