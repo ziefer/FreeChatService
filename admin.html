@@ -33,9 +33,9 @@ $(function() {
 
 	socket.on('system report', function(data) {
 		if (data.err) {
-			message_list.innerHTML = "Error :" + data.stderr + "<br />" + message_list.innerHTML;
+			message_list.innerHTML = "Error:<br />" + data.stderr.replace('\n', '<br />') + "<br />" + message_list.innerHTML;
 		} else {
-			message_list.innerHTML = "System :" + data.stdout + "<br />" + message_list.innerHTML;
+			message_list.innerHTML = "System:<br />" + data.stdout.replace('\n', '<br />') + "<br />" + message_list.innerHTML;
 		}
 	});
 });
