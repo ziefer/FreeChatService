@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+	<title>lisyoen's www root</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+	<script src="http://lisyoen.cafe24.com:8003/socket.io/socket.io.js"></script>
+	<script>
+var socket = io.connect('http://lisyoen.cafe24.com:8003');
+
+function send() {
+	socket.emit('my other event', {message:input.value});
+	input.value = "";
+}
+
+$(function() {
+	socket.on('message', function(data) {
+		console.log(data);
+		message_list.innerHTML = "Other :" + data.message + "<br />" + message_list.innerHTML;
+	});
+
+	socket.on('my_message', function(data) {
+		message_list.innerHTML = "You :" + data.message + "<br />" + message_list.innerHTML;
+	});
+});
+	</script>
+</head>
+<body>
+	<input type="message" onkeydown="if (event.keyCode == 13) send() " id="input">
+	<button type="button" onclick="send()">Send</button>
+	<div id="message_list"></div>
+</body>
+</html>
