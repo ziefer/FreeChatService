@@ -32,7 +32,7 @@ io.sockets.on('connection', function (socket) {
 		socket.emit('my_report', {users: 10, rooms: 3});
 	});
 	
-	function echo_call(cmd, callback) {
+	function echo_exec(cmd, callback) {
 		exec(cmd, function(err, stdout, stderr) {
 			if (err) {
 				console.log(stderr + '\nError:' + err.code, err.code);
@@ -47,6 +47,11 @@ io.sockets.on('connection', function (socket) {
 	
 	socket.on('git pull', function (data) {
 		console.log('git pull');
-		echo_call('git pull', function() {});
+		echo_exec('git pull', function() {});
+	});
+
+	socket.on('restart', function (data) {
+		console.log('restart');
+		echo_exec('forever restart chat.js', function() {});
 	});
 });
