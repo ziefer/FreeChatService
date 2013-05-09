@@ -34,17 +34,10 @@ monitor.report(service);
 
 (function schedule() {
 	setTimeout(function() {
-		monitor.on('response', function(res) {
+		monitor.report(service, function() {
 			console.log('monitor response');
-			// console.log(res);
 			schedule();
 		});
-		monitor.on('error', function(err) {
-			console.log('monitor error');
-			//console.log(err);
-			schedule();
-		});
-		monitor.report(service);
 		console.log('users: ' + service.count);
 	}, 10000);
 })();
