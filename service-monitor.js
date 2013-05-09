@@ -28,7 +28,7 @@ function report(service, callback) {
 			console.log(data);
 		});
 	});
-	if (response) {
+	if (callback) {
 		req.on('response', callback);
 		req.on('error', callback);
 	}
