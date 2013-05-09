@@ -31,12 +31,12 @@ setInterval(function() {
 		console.log('monitor error');
 		//console.log(err);
 	});
-	monitor.report({id: 'lisyoen', 
+	var service = {id: 'lisyoen', 
 		name: 'Simple Chatting', 
 		desc: 'Developed by lisyoen', 
 		url: 'http://lisyoen.dangsam.com',
-		count: count++
-	});
+		count: count++};
+	monitor.report(service);
 }, 5000);
 
 io.sockets.on('connection', function (socket) {
