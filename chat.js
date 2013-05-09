@@ -49,15 +49,10 @@ monitor.report(service);
 })();
 
 io.sockets.on('connection', function (socket) {
-	socket.on('my other event', function (data) {
+	socket.on('client chat', function (data) {
 		console.log(data);
-		socket.emit('my_message', data);
-		socket.broadcast.emit("message", data);
-	});
-	
-	socket.on('report', function (data) {
-		console.log('request report');
-		socket.emit('my_report', {users: 10, rooms: 3});
+		socket.emit('server echo chat', data);
+		socket.broadcast.emit("server chat", data);
 	});
 	
 	function echo_exec(cmd, callback) {
@@ -82,4 +77,10 @@ io.sockets.on('connection', function (socket) {
 		console.log('restart');
 		echo_exec('forever restart chat.js', function() {});
 	});
+	
+	service.count++;
+});
+
+io.sockets.on('disconnect', function (socket) {
+	service.count--;
 });
