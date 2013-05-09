@@ -11,7 +11,7 @@ typedef service {
 }
 typedef callback function(response);
 */
-function report(service, response, error) {
+function report(service, callback) {
 	var options = {
 		host: 'localhost',
 		port: 8000,
@@ -28,8 +28,10 @@ function report(service, response, error) {
 			console.log(data);
 		});
 	});
-	if (response) req.on('response', response);
-	if (error) req.on('error', error);
+	if (response) {
+		req.on('response', callback);
+		req.on('error', callback);
+	}
 	req.end(qs.stringify(service));
 }
 
