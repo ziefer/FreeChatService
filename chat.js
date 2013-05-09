@@ -21,10 +21,6 @@ function handler (req, res) {
     });
 }
 
-monitor.on('error', function(err) {
-	console.log('monitor error');
-	//console.log(err);
-});
 var service = {id: 'lisyoen', 
 	name: 'Simple Chatting', 
 	desc: 'Developed by lisyoen', 
