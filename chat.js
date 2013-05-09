@@ -30,7 +30,6 @@ var service = {id: 'lisyoen',
 	desc: 'Developed by lisyoen', 
 	url: 'http://lisyoen.dangsam.com',
 	count: 0};
-service.count++;
 monitor.report(service);
 
 setInterval(function() {
