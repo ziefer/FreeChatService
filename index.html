@@ -9,18 +9,18 @@
 var socket = io.connect('http://lisyoen.cafe24.com:8003');
 
 function send() {
-	socket.emit('my other event', {message:input.value});
+	socket.emit('client message', {message:input.value});
 	input.value = "";
 }
 
 $(function() {
-	socket.on('message', function(data) {
+	socket.on('server chat', function(data) {
 		console.log(data);
 		message_list.innerHTML = "Other :" + data.message + "<br />" + message_list.innerHTML;
 	});
 
-	socket.on('my_message', function(data) {
-		message_list.innerHTML = "You :" + data.message + "<br />" + message_list.innerHTML;
+	socket.on('server echo chat', function(data) {
+		message_list.innerHTML = "Me :" + data.message + "<br />" + message_list.innerHTML;
 	});
 	
 	socket.on('system report', function(data) {
