@@ -21,7 +21,6 @@ function handler (req, res) {
     });
 }
 
-var count = 0;
 monitor.on('error', function(err) {
 	console.log('monitor error');
 	//console.log(err);
@@ -30,7 +29,8 @@ var service = {id: 'lisyoen',
 	name: 'Simple Chatting', 
 	desc: 'Developed by lisyoen', 
 	url: 'http://lisyoen.dangsam.com',
-	count: count};
+	count: 0};
+service.count++;
 monitor.report(service);
 
 setInterval(function() {
@@ -42,11 +42,7 @@ setInterval(function() {
 		console.log('monitor error');
 		//console.log(err);
 	});
-	var service = {id: 'lisyoen', 
-		name: 'Simple Chatting', 
-		desc: 'Developed by lisyoen', 
-		url: 'http://lisyoen.dangsam.com',
-		count: count++};
+	service.count++;
 	monitor.report(service);
 }, 10000);
 
