@@ -22,10 +22,6 @@ function handler (req, res) {
 }
 
 var count = 0;
-monitor.on('response', function(res) {
-	console.log('monitor response');
-	// console.log(res);
-});
 monitor.on('error', function(err) {
 	console.log('monitor error');
 	//console.log(err);
