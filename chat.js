@@ -32,18 +32,21 @@ var service = {id: 'lisyoen',
 	count: 0};
 monitor.report(service);
 
-setInterval(function() {
-	monitor.on('response', function(res) {
-		console.log('monitor response');
-		// console.log(res);
-	});
-	monitor.on('error', function(err) {
-		console.log('monitor error');
-		//console.log(err);
-	});
-	service.count++;
-	monitor.report(service);
-}, 10000);
+(function schedule() {
+	setTimeout(function() {
+		monitor.on('response', function(res) {
+			console.log('monitor response');
+			// console.log(res);
+			schedule();
+		});
+		monitor.on('error', function(err) {
+			console.log('monitor error');
+			//console.log(err);
+			schedule();
+		});
+		monitor.report(service);
+	}, 10000);
+})();
 
 io.sockets.on('connection', function (socket) {
 	socket.on('my other event', function (data) {
