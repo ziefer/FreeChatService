@@ -3,7 +3,8 @@
 var app = require('http').createServer(handler)
     , io = require('socket.io').listen(app)
     , fs = require('fs')
-    , exec = require('child_process').exec;
+    , exec = require('child_process').exec
+	, monitor = require('./service-monitor');
 
 app.listen(8003);
 
@@ -19,6 +20,24 @@ function handler (req, res) {
         res.end(data);
     });
 }
+
+var count = 0;
+setInterval(function() {
+	monitor.on('response', function(res) {
+		console.log('monitor response');
+		// console.log(res);
+	});
+	monitor.on('error', function(err) {
+		console.log('monitor error');
+		//console.log(err);
+	});
+	monitor.report({id: 'lisyoen', 
+		name: 'Simple Chatting', 
+		desc: 'Developed by lisyoen', 
+		url: 'http://lisyoen.dangsam.com',
+		count: count++
+	});
+}, 5000);
 
 io.sockets.on('connection', function (socket) {
 	socket.on('my other event', function (data) {
