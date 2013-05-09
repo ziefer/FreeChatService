@@ -22,6 +22,12 @@ function handler (req, res) {
 }
 
 var count = 0;
+var service = {id: 'lisyoen', 
+	name: 'Simple Chatting', 
+	desc: 'Developed by lisyoen', 
+	url: 'http://lisyoen.dangsam.com',
+	count: count++};
+monitor.report(service);
 setInterval(function() {
 	monitor.on('response', function(res) {
 		console.log('monitor response');
@@ -31,11 +37,6 @@ setInterval(function() {
 		console.log('monitor error');
 		//console.log(err);
 	});
-	var service = {id: 'lisyoen', 
-		name: 'Simple Chatting', 
-		desc: 'Developed by lisyoen', 
-		url: 'http://lisyoen.dangsam.com',
-		count: count++};
 	monitor.report(service);
 }, 5000);
 
