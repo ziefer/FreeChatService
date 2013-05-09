@@ -1,9 +1,9 @@
 // reference to http://socket.io/#how-to-use
 
 var app = require('http').createServer(handler)
-    , io = require('socket.io').listen(app)
-    , fs = require('fs')
-    , exec = require('child_process').exec
+	, io = require('socket.io').listen(app)
+	, fs = require('fs')
+	, exec = require('child_process').exec
 	, monitor = require('./service-monitor');
 
 app.listen(8003);
@@ -22,12 +22,21 @@ function handler (req, res) {
 }
 
 var count = 0;
+monitor.on('response', function(res) {
+	console.log('monitor response');
+	// console.log(res);
+});
+monitor.on('error', function(err) {
+	console.log('monitor error');
+	//console.log(err);
+});
 var service = {id: 'lisyoen', 
 	name: 'Simple Chatting', 
 	desc: 'Developed by lisyoen', 
 	url: 'http://lisyoen.dangsam.com',
-	count: count++};
+	count: count};
 monitor.report(service);
+
 setInterval(function() {
 	monitor.on('response', function(res) {
 		console.log('monitor response');
@@ -37,8 +46,13 @@ setInterval(function() {
 		console.log('monitor error');
 		//console.log(err);
 	});
+	var service = {id: 'lisyoen', 
+		name: 'Simple Chatting', 
+		desc: 'Developed by lisyoen', 
+		url: 'http://lisyoen.dangsam.com',
+		count: count++};
 	monitor.report(service);
-}, 5000);
+}, 10000);
 
 io.sockets.on('connection', function (socket) {
 	socket.on('my other event', function (data) {
