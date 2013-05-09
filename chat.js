@@ -82,8 +82,10 @@ io.sockets.on('connection', function (socket) {
 	socket.on('disconnect', function (socket) {
 		console.log('disconnect');
 		service.count--;
+		monitor.report(service);
 	});
 
 	service.count++;
+	monitor.report(service);
 });
 
