@@ -9,7 +9,7 @@
 var socket = io.connect('http://lisyoen.cafe24.com:8003');
 
 function send() {
-	socket.emit('client message', {message:input.value});
+	socket.emit('client chat', {message:input.value});
 	input.value = "";
 }
 
