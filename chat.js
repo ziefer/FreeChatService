@@ -77,11 +77,12 @@ io.sockets.on('connection', function (socket) {
 		console.log('restart');
 		echo_exec('forever restart chat.js', function() {});
 	});
-	
+
+	socket.on('disconnect', function (socket) {
+		console.log('disconnect');
+		service.count--;
+	});
+
 	service.count++;
 });
 
-io.sockets.on('disconnect', function (socket) {
-	console.log('disconnect');
-	service.count--;
-});
