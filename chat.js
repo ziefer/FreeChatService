@@ -45,6 +45,7 @@ monitor.report(service);
 			schedule();
 		});
 		monitor.report(service);
+		console.log('users: ' + service.count);
 	}, 10000);
 })();
 
