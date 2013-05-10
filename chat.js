@@ -21,9 +21,9 @@ function handler (req, res) {
     });
 }
 
-var service = {id: 'lisyoen', 
+var service = {id: 'ziefer', 
 	name: 'Simple Chatting', 
-	desc: 'Developed by lisyoen', 
+	desc: 'Developed by ziefer', 
 	url: 'http://lisyoen.dangsam.com',
 	count: 0};
 monitor.report(service);
