@@ -24,7 +24,7 @@ function handler (req, res) {
 var service = {id: 'ziefer', 
 	name: 'Chatting', 
 	desc: 'Developed by ziefer', 
-	url: 'http://ziefer.dangsam.com',
+	url: 'http://free.dangsam.com/ziefer',
 	count: 0};
 monitor.report(service);
 
