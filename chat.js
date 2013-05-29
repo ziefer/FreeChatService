@@ -22,9 +22,9 @@ function handler (req, res) {
 }
 
 var service = {id: 'ziefer', 
-	name: 'Simple Chatting', 
+	name: 'Chatting', 
 	desc: 'Developed by ziefer', 
-	url: 'http://lisyoen.dangsam.com',
+	url: 'http://ziefer.dangsam.com',
 	count: 0};
 monitor.report(service);
 
