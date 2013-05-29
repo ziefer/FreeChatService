@@ -6,7 +6,7 @@ var app = require('http').createServer(handler)
 	, exec = require('child_process').exec
 	, monitor = require('./service-monitor');
 
-app.listen(8008);
+app.listen(4266);
 
 function handler (req, res) {
     fs.readFile(__dirname + '/index.html',
